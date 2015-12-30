@@ -3,6 +3,9 @@ node_js:
     - "0.10"
     - '4.*'
     - '5.*'
+before_install:
+  - ./build_etcd.sh v0.3.0
+before_script: "./etcd/bin/etcd &"
 script:
     - npm run travis
 sudo: false

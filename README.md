@@ -1,5 +1,7 @@
 # etcetera
 
+[![on npm](http://img.shields.io/npm/v/etcetera.svg?style=flat)](https://www.npmjs.org/package/etcetera)  [![Tests](http://img.shields.io/travis/npm/etcetera.svg?style=flat)](http://travis-ci.org/npm/etcetera)  [![Dependencies](http://img.shields.io/david/npm/etcetera.svg?style=flat)](https://david-dm.org/npm/etcetera)
+
 Read config from etcd. Fill out templates. Write upstart files. Be our configurator generator oscillator make a circuit with us.
 
 ## Usage
