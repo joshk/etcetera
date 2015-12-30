@@ -4,26 +4,26 @@
 var
 	demand   = require('must'),
 	fs       = require('fs'),
-	tomlreader = require('../index').tomlreader
+	upstart = require('../index').upstart
 	;
 
-describe('tomlreader', function()
+describe('upstart', function()
 {
 	it('demands a string file path', function()
 	{
-		function shouldThrow() { tomlreader(); }
+		function shouldThrow() { upstart(); }
 		shouldThrow.must.throw(/file path as the first/);
 	});
 
 	it('demands a string directory path', function()
 	{
-		function shouldThrow() { tomlreader('a'); }
+		function shouldThrow() { upstart('a'); }
 		shouldThrow.must.throw(/directory path as the second/);
 	});
 
 	it('writes stuff', function(done)
 	{
-		tomlreader(__dirname + '/fixtures/test1.toml', '.', function() {}, function(err)
+		upstart(__dirname + '/fixtures/test1.toml', '.', function() {}, function(err)
 		{
 			demand(err).not.exist();
 

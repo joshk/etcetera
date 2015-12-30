@@ -2,7 +2,7 @@
 
 var
 	path    = require('path'),
-	tomlreader = require('../lib/tomlreader'),
+	upstart = require('../lib/upstart'),
 	argv    = require('yargs')
 		.usage('generate an upstart file from the provided config\n$0 [-o output] [service-name|configpath]')
 		.example('upstarter my-service')
@@ -34,7 +34,7 @@ function log(msg)
 	console.log(msg);
 }
 
-tomlreader(configpath, argv.output, log, function(err)
+upstart(configpath, argv.output, log, function(err)
 {
 	if (err) throw err;
 	process.exit(0);

@@ -13,8 +13,8 @@ describe('etcetera', function()
 		etcetera.must.be.an.object();
 		etcetera.must.have.property('lookup');
 		etcetera.lookup.must.be.a.function();
-		etcetera.must.have.property('tomlreader');
-		etcetera.tomlreader.must.be.a.function();
+		etcetera.must.have.property('upstart');
+		etcetera.upstart.must.be.a.function();
 		etcetera.must.have.property('template');
 		etcetera.template.must.be.a.function();
 	});

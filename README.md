@@ -6,7 +6,7 @@ Read config from etcd. Fill out templates. Write upstart files. Be our diode ele
 
 ## Usage
 
-`npm install -g @npminc/etcetera`
+`npm install -g etcetera`
 
 This will install two commandline tools.
 
