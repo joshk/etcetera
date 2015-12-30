@@ -1,0 +1,41 @@
+{
+  "name": "@npminc/etcetera",
+  "description": "config from etcd",
+  "version": "1.0.0",
+  "author": "C J Silverio <ceej@npmjs.com>",
+  "bin": {
+    "etcetera": "bin/etcetera.js",
+    "upstarter": "bin/upstarter.js"
+  },
+  "dependencies": {
+    "async": "~1.5.0",
+    "chalk": "~1.1.1",
+    "dot": "~1.0.3",
+    "lodash.map": "~3.1.4",
+    "node-etcd": "~4.2.1",
+    "rc": "~1.1.6",
+    "toml-require": "~1.1.0",
+    "yargs": "~3.31.0"
+  },
+  "devDependencies": {
+    "eslint": "~1.10.3",
+    "mocha": "~2.3.4",
+    "must": "~0.13.1",
+    "nyc": "~5.0.1",
+    "sinon": "~1.17.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "configuration",
+    "etcd"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint bin lib test index.js",
+    "test": "nyc mocha -R spec test",
+    "travis": "npm run lint && mocha -R spec test"
+  }
+}

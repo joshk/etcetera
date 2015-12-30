@@ -1,0 +1,16 @@
+app = "testapp"
+description =  "I am a test"
+processes = 3
+start =  "npm start"
+argv = [ "bleat"]
+
+[environment]
+    ENV_VAR = "env var"
+    NODE_ENVIRONMENT = "production"
+
+[arguments]
+    arg1 = "value1"
+    arg2 = "value2"
+
+[files]
+    "targets.json" = "targets.vands"
