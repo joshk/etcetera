@@ -2,7 +2,7 @@
 
 [![on npm](http://img.shields.io/npm/v/etcetera.svg?style=flat)](https://www.npmjs.org/package/etcetera)  [![Tests](http://img.shields.io/travis/npm/etcetera.svg?style=flat)](http://travis-ci.org/npm/etcetera)  [![Dependencies](http://img.shields.io/david/npm/etcetera.svg?style=flat)](https://david-dm.org/npm/etcetera)
 
-Read config from etcd. Fill out templates. Write upstart files. Be our configurator generator oscillator make a circuit with us.
+Read config from etcd. Fill out templates. Write upstart files. Be our diode electrode  generator oscillator configurator make a circuit with us.
 
 ## Usage
 
@@ -15,7 +15,7 @@ This will install two commandline tools.
 Configure the named application by filling out its template with data from etcd.
 
 ```
-[-d deploydir] [-g hostgroup] [-c template] appname
+etcetera [-d deploydir] [-g hostgroup] [-c template] appname
 Options:
   -d, --deploydir  full path to deploy directory
   -t, --template   configuration template file name
