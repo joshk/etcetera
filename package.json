@@ -1,11 +1,14 @@
 {
   "name": "@npminc/etcetera",
-  "description": "config from etcd",
+  "description": "read service config from etcd",
   "version": "1.0.0",
   "author": "C J Silverio <ceej@npmjs.com>",
   "bin": {
     "etcetera": "bin/etcetera.js",
     "upstarter": "bin/upstarter.js"
+  },
+  "bugs": {
+    "url": "https://github.com/npm/etcetera/issues"
   },
   "dependencies": {
     "async": "~1.5.0",
@@ -27,12 +30,17 @@
   "directories": {
     "test": "test"
   },
+  "homepage": "https://github.com/npm/etcetera#readme",
   "keywords": [
     "configuration",
     "etcd"
   ],
   "license": "ISC",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npm/etcetera.git"
+  },
   "scripts": {
     "lint": "eslint bin lib test index.js",
     "test": "nyc mocha -R spec test",
