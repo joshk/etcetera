@@ -1,0 +1,31 @@
+# supplied by app author
+# Anything in curly braces is a token to look up in etcd.
+
+app = "my-little-service"
+description =  "this is a really adorable little service"
+processes = 3
+
+# how upstart should invoke this service
+start =  "./bin/run-server.js"
+
+# argv is a list of non-option args to pass to the start script
+argv = [ config.toml ]
+
+[environment]
+    NODE_ENV = "production"
+    REDIS_URL = "redis://localhost:6379"
+    METRICS_URL = "{{metrics_url}}"
+
+[arguments]
+    couch_url = "{{couchdb_write_primary_url}}"
+    user_api = "{{user_api_url}}"
+    another-argument = "{{another_argument}}"
+    my-var-name = "{{my-var-name}}"
+    host = "{{listen_host}}"
+    port = "{{listen_port}}"
+
+# files is a dict of config files to look up & dump intact as text
+# keys are file names, values are etcd keys to look up
+# this is a transitional step.
+[files]
+    "targets.json" = "targets.json.my-little-service"
