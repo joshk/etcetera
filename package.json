@@ -1,5 +1,5 @@
 {
-  "name": "etcetera",
+  "name": "@npm/etcetera",
   "description": "read service config from etcd",
   "version": "1.0.0",
   "author": "C J Silverio <ceej@npmjs.com>",
