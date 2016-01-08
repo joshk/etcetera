@@ -67,7 +67,7 @@ function writeConfigurationTemplate(tmplname, callback)
 			});
 
 			var destname = tmplname.replace('.tmpl', '.toml');
-			log('-- config: ' + chalk.blue(destname));
+			log('-- wrote config: ' + chalk.yellow(destname));
 			fs.writeFile(destname, tmpl, 'utf8', function(err)
 			{
 				callback(err, destname);
@@ -101,13 +101,14 @@ function dumpFiles(input)
 			fs.writeFile(fname, result.node.value, function(err)
 			{
 				if (err) console.error(err);
-				else log('-- additional file: ' + chalk.blue(k));
+				else log('-- wrote additional file: ' + chalk.yellow(k));
 			});
 		});
 	});
 }
 
-log('filling out config: ' + chalk.blue(inputTmpl));
+log('configuring app ' + chalk.blue(app));
+log('-- reading template: ' + chalk.blue(inputTmpl));
 writeConfigurationTemplate(inputTmpl, function(err, config)
 {
 	if (err)
