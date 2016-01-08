@@ -1,7 +1,7 @@
 {
   "name": "@npm/etcetera",
   "description": "read service config from etcd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "C J Silverio <ceej@npmjs.com>",
   "bin": {
     "etcetera": "bin/etcetera.js",
