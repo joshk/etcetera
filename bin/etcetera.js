@@ -110,7 +110,11 @@ function dumpFiles(input)
 log('filling out config: ' + chalk.blue(inputTmpl));
 writeConfigurationTemplate(inputTmpl, function(err, config)
 {
-	if (err) throw err;
+	if (err)
+	{
+		log(chalk.red(err.message) + '; exiting');
+		process.exit(1);
+	}
 
 	// now we read it & dump any files mentioned
 	dumpFiles(config);
