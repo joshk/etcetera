@@ -11,7 +11,7 @@
     "url": "https://github.com/npm/etcetera/issues"
   },
   "dependencies": {
-    "async": "~1.5.0",
+    "async": "~1.5.2",
     "chalk": "~1.1.1",
     "dot": "~1.0.3",
     "lodash.map": "~3.1.4",

@@ -4,7 +4,7 @@
 
 Read config from etcd. Fill out templates. Write upstart files. Be our diode electrode  generator oscillator configurator make a circuit with us.
 
-An example template is in `emplates/configuration.tmpl`.
+An example template is in `templates/configuration.tmpl`.
 
 ## Usage
 
