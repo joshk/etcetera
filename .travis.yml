@@ -9,3 +9,4 @@ before_script: "./etcd/bin/etcd &"
 script:
     - npm run travis
 sudo: false
+after_success: npm run coverage
