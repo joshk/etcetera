@@ -17,6 +17,7 @@
     "lodash.map": "~3.1.4",
     "node-etcd": "~4.2.1",
     "rc": "~1.1.6",
+    "shell-quote": "~1.4.3",
     "toml-require": "~1.1.0",
     "yargs": "~3.31.0"
   },
