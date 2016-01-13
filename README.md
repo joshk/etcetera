@@ -1,6 +1,7 @@
 # etcetera
 
-[![on npm](http://img.shields.io/npm/v/etcetera.svg?style=flat)](https://www.npmjs.org/package/etcetera)  [![Tests](http://img.shields.io/travis/npm/etcetera.svg?style=flat)](http://travis-ci.org/npm/etcetera)  [![Dependencies](http://img.shields.io/david/npm/etcetera.svg?style=flat)](https://david-dm.org/npm/etcetera)
+[![on npm](http://img.shields.io/npm/v/etcetera.svg?style=flat)](https://www.npmjs.org/package/etcetera)  [![Tests](http://img.shields.io/travis/npm/etcetera.svg?style=flat)](http://travis-ci.org/npm/etcetera)
+[![Coverage Status](https://coveralls.io/repos/npm/etcetera/badge.svg?branch=master&service=github)](https://coveralls.io/github/npm/etcetera?branch=master) [![Dependencies](http://img.shields.io/david/npm/etcetera.svg?style=flat)](https://david-dm.org/npm/etcetera)
 
 Read config from etcd. Fill out templates. Write upstart files. Be our diode electrode  generator oscillator configurator make a circuit with us.
 
