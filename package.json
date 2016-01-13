@@ -48,6 +48,6 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint bin lib test index.js",
     "test": "nyc mocha -R spec test",
-    "travis": "npm run lint && mocha -R spec test && npm run coverage"
+    "travis": "npm run lint && nyc mocha -R spec test && npm run coverage"
   }
 }
