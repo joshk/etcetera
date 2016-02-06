@@ -27,7 +27,7 @@
     "mocha": "~2.4.2",
     "mocha-lcov-reporter": "~1.0.0",
     "must": "~0.13.1",
-    "nyc": "~5.5.0",
+    "nyc": "~5.6.0",
     "sinon": "~1.17.2"
   },
   "directories": {
