@@ -19,11 +19,11 @@
     "rc": "~1.1.6",
     "shell-quote": "~1.4.3",
     "toml-require": "~1.1.0",
-    "yargs": "~3.32.0"
+    "yargs": "~4.1.0"
   },
   "devDependencies": {
     "coveralls": "~2.11.6",
-    "eslint": "~2.0.0",
+    "eslint": "~2.1.0",
     "mocha": "~2.4.2",
     "mocha-lcov-reporter": "~1.0.0",
     "must": "~0.13.1",
