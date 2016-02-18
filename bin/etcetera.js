@@ -36,7 +36,7 @@ var
 	;
 
 var app = argv._[0];
-var deploydir = argv.d || path.join('mnt', 'deploys', app);
+var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
 
 function log(msg)
