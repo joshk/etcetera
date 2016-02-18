@@ -97,11 +97,11 @@ function dumpFiles(input)
 				process.exit(1);
 			}
 
-			var fname = path.join('./output/', k);
+			var fname = path.join(deploydir, k);
 			fs.writeFile(fname, result.node.value, function(err)
 			{
 				if (err) console.error(err);
-				else log('-- wrote additional file: ' + chalk.yellow(k));
+				else log('-- wrote additional file: ' + fname);
 			});
 		});
 	});
