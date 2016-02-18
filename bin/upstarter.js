@@ -25,7 +25,7 @@ var
 var configpath = argv._[0];
 if (configpath.indexOf(path.sep) === -1)
 {
-	configpath = path.join('mnt', 'deploys', argv._[0], 'configuration.toml');
+	configpath = path.join('/mnt', 'deploys', configpath, 'configuration.toml');
 }
 
 function log(msg)
