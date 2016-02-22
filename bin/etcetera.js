@@ -85,7 +85,7 @@ function dumpFiles(input)
 	// now dump the files listed in config.files
 	// This is obviously a hacky step forward from existing config.
 
-	var keys = Object.keys(config.files);
+	var keys = Object.keys(config.files || {});
 	keys.forEach(function(k)
 	{
 		var fkey = config.files[k];
