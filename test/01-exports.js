@@ -8,14 +8,9 @@ var
 
 describe('etcetera', function()
 {
-	it('exports three functions', function()
+	it('exports one function', function()
 	{
-		etcetera.must.be.an.object();
-		etcetera.must.have.property('lookup');
-		etcetera.lookup.must.be.a.function();
 		etcetera.must.have.property('upstart');
 		etcetera.upstart.must.be.a.function();
-		etcetera.must.have.property('template');
-		etcetera.template.must.be.a.function();
 	});
 });
