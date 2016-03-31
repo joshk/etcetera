@@ -1,5 +1,7 @@
 # {{ app}} node %i
+{% if description %}
 description "{{description}}"
+{% endif %}
 
 start on started network-services
 stop on stopping network-services
