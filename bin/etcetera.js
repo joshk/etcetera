@@ -63,6 +63,7 @@ function writeConfigurationTemplate(tmplname, callback)
 
 		var objectified = objectify(reply.node);
 		var transformed = transform(objectified);
+		transformed.it = transformed;
 
 		var destname = tmplname.replace('.tmpl', '.toml');
 		var tmpl = nunjucks.renderString(fs.readFileSync(tmplname, 'utf8'), transformed);
