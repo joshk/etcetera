@@ -1,5 +1,5 @@
-# {{= it.app}} node %i
-description "{{= it.description}}"
+# {{ app}} node %i
+description "{{description}}"
 
 start on started network-services
 stop on stopping network-services
@@ -11,7 +11,7 @@ limit nofile 1000000 1000000
 limit core unlimited unlimited
 
 script
-    cd {{=it.deploydir}}
-    {{= it.env}} {{= it.start}} \
-    {{= it.args}} {{= it.argv}} >> logs/{{= it.app}}%i.log 2>&1
+    cd {{deploydir}}
+    {{env}} {{start}} \
+    {{args}} {{argv}} >> logs/{{app}}%i.log 2>&1
 end script

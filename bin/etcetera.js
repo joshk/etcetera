@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
 var
-	Async    = require('async'),
-	chalk    = require('chalk'),
-	fs       = require('fs'),
-	path     = require('path'),
-	lookup   = require('../lib/lookup'),
-	template = require('../lib/template'),
-	argv     = require('yargs')
+	chalk     = require('chalk'),
+	fs        = require('fs'),
+	path      = require('path'),
+	Etcd      = require('node-etcd'),
+	objectify = require('etcd-result-objectify'),
+	nunjucks  = require('nunjucks'),
+	transform = require('../lib/transform.js'),
+	rc	  = require('rc')('renv', { hosts: '127.0.0.1:4001',
+		ssl:   false
+	}, []),
+	argv      = require('yargs')
 		.usage('configure the named application by filling out its template with data from etcd\n$0 [-d deploydir] [-g hostgroup] [-c template] appname')
 		.example('etcetera my-service')
 		.example('etcetera -d /mnt/deploys/foozle my-service')
@@ -38,6 +42,12 @@ var
 var app = argv._[0];
 var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
+nunjucks.configure({ autoescape: false });
+
+var etcd = new Etcd(
+	Array.isArray(rc.hosts) ? rc.hosts : [rc.hosts],
+	rc.ssl ? true : undefined
+);
 
 function log(msg)
 {
@@ -47,31 +57,20 @@ function log(msg)
 
 function writeConfigurationTemplate(tmplname, callback)
 {
-	template(tmplname, function(err, tmpl, variables)
+	etcd.get('/', { recursive: true }, function(err, reply)
 	{
 		if (err) return callback(err);
 
-		var tasks = {};
-		variables.forEach(function(v)
-		{
-			tasks[v] = function(cb) { lookup(v, app, argv.group, cb); };
-		});
+		var objectified = objectify(reply.node);
+		var transformed = transform(objectified);
+		transformed.it = transformed;
 
-		Async.parallel(tasks, function(err, values)
+		var destname = tmplname.replace('.tmpl', '.toml');
+		var tmpl = nunjucks.renderString(fs.readFileSync(tmplname, 'utf8'), transformed);
+		log('-- wrote config: ' + chalk.yellow(destname));
+		fs.writeFile(destname, tmpl, 'utf8', function(err)
 		{
-			if (err) return callback(err);
-			variables.forEach(function(v)
-			{
-				var patt = new RegExp('{{' + v + '}}', 'g');
-				tmpl = tmpl.replace(patt, values[v]);
-			});
-
-			var destname = tmplname.replace('.tmpl', '.toml');
-			log('-- wrote config: ' + chalk.yellow(destname));
-			fs.writeFile(destname, tmpl, 'utf8', function(err)
-			{
-				callback(err, destname);
-			});
+			callback(err, destname);
 		});
 	});
 }
@@ -80,7 +79,6 @@ function dumpFiles(input)
 {
 	require('toml-require').install();
 	var config = require(path.resolve(input));
-	var etcd = lookup.client();
 
 	// now dump the files listed in config.files
 	// This is obviously a hacky step forward from existing config.
