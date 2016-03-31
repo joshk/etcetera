@@ -42,6 +42,7 @@ var
 var app = argv._[0];
 var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
+nunjucks.configure({ autoescape: false });
 
 var etcd = new Etcd(
 	Array.isArray(rc.hosts) ? rc.hosts : [rc.hosts],
