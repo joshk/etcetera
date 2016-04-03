@@ -14,7 +14,7 @@
     "async": "~1.5.2",
     "chalk": "~1.1.1",
     "etcd-result-objectify": "~1.0.0",
-    "lodash.map": "~4.2.0",
+    "lodash.map": "~4.3.0",
     "node-etcd": "~4.2.1",
     "nunjucks": "~2.4.1",
     "rc": "~1.1.6",
