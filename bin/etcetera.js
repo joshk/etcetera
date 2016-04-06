@@ -62,7 +62,7 @@ function writeConfigurationTemplate(tmplname, callback)
 		if (err) return callback(err);
 
 		var objectified = objectify(reply.node);
-		var transformed = transform(objectified);
+		var transformed = transform(objectified, app, argv.group);
 		transformed.it = transformed;
 
 		var destname = tmplname.replace('.tmpl', '.toml');
