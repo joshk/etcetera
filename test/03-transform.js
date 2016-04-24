@@ -25,7 +25,6 @@ describe('transform', function()
 			'foo.app': 'baz'
 		}, 'app').must.eql({
 			foo: 'baz',
-			'foo.app': 'baz'
 		});
 	});
 
@@ -36,5 +35,60 @@ describe('transform', function()
 		}, 'app').must.eql({
 			foo: { abc: 'cba' }
 		});
+	});
+
+	it('preserves all top-level keys', function()
+	{
+		var input = { foo: { one: '1', two: 2, 'one.app': 'one!!!11!!' } };
+		var output = transform(input, 'app');
+		output.must.be.an.object();
+		output.must.have.property('foo');
+		output.foo.must.have.property('one');
+		output.foo.one.must.equal('one!!!11!!');
+		output.foo.must.have.property('two');
+		output.foo.two.must.equal(2);
+	});
+
+	it('sets the top-level key when it is missing in the input', function()
+	{
+		var input = { foo: '{"key.app":"expected"}' };
+		var output = transform(input, 'app');
+		output.must.eql({ foo: { key: 'expected' }});
+	});
+
+	it('sets the top-level key when given matching app & group', function()
+	{
+		var input = { foo: '{"key.app.group":"expected"}' };
+		var output = transform(input, 'app', 'group');
+		output.must.eql({ foo: { key: 'expected' }});
+	});
+
+	it('ignores mismatching apps', function()
+	{
+		var input = { foo: '{"key.app.group":"expected", "key.other":"not-expected"}' };
+		var output = transform(input, 'app', 'group');
+		output.must.eql({ foo: { key: 'expected' }});
+	});
+
+	it('ignores top-level keys when a matching var is found', function()
+	{
+		var input = { foo: '{"key":"not-expected","key.app":"expected", "key.other":"to-be-ignored"}' };
+
+		var output = transform(input, 'app');
+		output.must.be.an.object();
+		output.must.have.property('foo');
+		output.foo.must.have.property('key');
+		output.foo.key.must.equal('expected');
+	});
+
+	it('gracefully ignores group vars', function()
+	{
+		var input = { foo: '{"key":"not-expected","key.app":"expected", "key.other":"to-be-ignored"}' };
+		var withGroup = transform(input, 'app', 'group');
+
+		withGroup.foo.must.be.an.object();
+		withGroup.foo.must.have.property('key');
+		withGroup.foo.key.must.equal('expected');
+		withGroup.must.not.have.property('key.other');
 	});
 });
