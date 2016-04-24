@@ -18,7 +18,7 @@
     "node-etcd": "~4.2.1",
     "nunjucks": "~2.4.1",
     "rc": "~1.1.6",
-    "shell-quote": "~1.5.0",
+    "shell-quote": "~1.6.0",
     "toml-require": "~1.1.0",
     "yargs": "~4.4.0"
   },
