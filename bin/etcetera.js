@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+var updater = require('update-notifier'),
+	pkg     = require('./package.json');
+updater({pkg: pkg}).notify();
+
 var
 	chalk     = require('chalk'),
 	fs        = require('fs'),
