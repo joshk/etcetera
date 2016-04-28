@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var updater = require('update-notifier'),
-	pkg     = require('./package.json');
+	pkg     = require('../package.json');
 updater({pkg: pkg}).notify();
 
 var
