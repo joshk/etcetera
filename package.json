@@ -4,6 +4,7 @@
   "version": "1.2.2",
   "author": "C J Silverio <ceej@npmjs.com>",
   "bin": {
+    "et": "bin/etcetera.js",
     "etcetera": "bin/etcetera.js",
     "upstarter": "bin/upstarter.js"
   },
