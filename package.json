@@ -29,7 +29,7 @@
     "eslint": "~2.11.1",
     "mocha": "~2",
     "must": "~0.13",
-    "nyc": "~6.4.0",
+    "nyc": "~6.6.1",
     "sinon": "~1"
   },
   "directories": {
