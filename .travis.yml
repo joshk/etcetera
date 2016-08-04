@@ -5,7 +5,7 @@ node_js:
     - '5'
     - '6'
 before_install:
-  - ./build_etcd.sh v2.3.7
+  - ./build_etcd.sh v0.3.0
 before_script: "./etcd/bin/etcd &"
 script:
     - npm run travis
