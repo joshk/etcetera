@@ -48,10 +48,12 @@ var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
 nunjucks.configure({ autoescape: false });
 
-var etcd = new Etcd(
-	Array.isArray(rc.hosts) ? rc.hosts : [rc.hosts],
-	rc.ssl ? true : undefined
-);
+if (!Array.isArray(rc.hosts)) rc.hosts = [rc.hosts];
+rc.hosts = rc.hosts.map(function(h)
+{
+	return (rc.ssl ? 'https://' : 'http://') + h;
+});
+var etcd = new Etcd(rc.hosts);
 
 function log(msg)
 {
