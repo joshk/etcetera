@@ -63,6 +63,13 @@ describe('transform', function()
 		output.must.eql({ foo: { key: 'expected' }});
 	});
 
+	it('sets the top-level key when given matching group', function()
+	{
+		var input = { foo: '{"key.group":"expected"}' };
+		var output = transform(input, 'app', 'group');
+		output.must.eql({ foo: { key: 'expected' }});
+	});
+
 	it('ignores mismatching apps', function()
 	{
 		var input = { foo: '{"key.app.group":"expected", "key.other":"not-expected"}' };
