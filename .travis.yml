@@ -1,10 +1,11 @@
 language: node_js
 node_js:
     - "0.10"
-    - '4.*'
-    - '5.*'
+    - '4'
+    - '5'
+    - '6'
 before_install:
-  - ./build_etcd.sh v0.3.0
+  - ./build_etcd.sh v2.3.7
 before_script: "./etcd/bin/etcd &"
 script:
     - npm run travis
