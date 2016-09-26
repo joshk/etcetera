@@ -93,7 +93,8 @@ function dumpFiles(input)
 	keys.forEach(function(k)
 	{
 		var fkey = config.files[k];
-		etcd.get(fkey, function(err, result)
+		var get = argv.group ? getFKey : etcd.get.bind(etcd);
+		get(fkey, function(err, result)
 		{
 			if (err)
 			{
@@ -108,6 +109,21 @@ function dumpFiles(input)
 				else log('-- wrote additional file: ' + fname);
 			});
 		});
+	});
+}
+
+function getFKey(fkey, cb)
+{
+	etcd.get(fkey + '.' + argv.group, function(err, result)
+	{
+		if (err)
+		{
+			return etcd.get(fkey, cb);
+		}
+		else
+		{
+			return cb(err, result);
+		}
 	});
 }
 
