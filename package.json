@@ -30,7 +30,8 @@
     "mocha": "~3.0.1",
     "must": "~0.13",
     "nyc": "~8.3.0",
-    "sinon": "~1"
+    "sinon": "~1",
+    "standard-version": "^2.4.0"
   },
   "directories": {
     "test": "test"
@@ -50,6 +51,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint bin lib test index.js",
     "test": "nyc mocha -R spec test",
-    "travis": "npm run lint && nyc mocha -R spec test && npm run coverage"
+    "travis": "npm run lint && nyc mocha -R spec test && npm run coverage",
+    "release": "standard-version"
   }
 }
