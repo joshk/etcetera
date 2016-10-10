@@ -48,7 +48,7 @@ var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
 nunjucks.configure({ autoescape: false });
 
-if (!Array.isArray(rc.hosts)) rc.hosts = [rc.hosts];
+if (!Array.isArray(rc.hosts)) rc.hosts = rc.hosts.split(' ');
 rc.hosts = rc.hosts.map(function(h)
 {
 	return (rc.ssl ? 'https://' : 'http://') + h;
