@@ -22,7 +22,7 @@
     "shell-quote": "~1.6.1",
     "toml-require": "~1.1.0",
     "update-notifier": "~1.0.0",
-    "yargs": "~6.0.0"
+    "yargs": "~6.3.0"
   },
   "devDependencies": {
     "coveralls": "~2.11.9",
