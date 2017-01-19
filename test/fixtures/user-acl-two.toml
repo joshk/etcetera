@@ -1,0 +1,9 @@
+app = "user-acl-two"
+description =  "who gets to do what when how why: the (alien, second) heart of the registry!"
+processes = 4
+start =  "node ./bin/run-server.js"
+
+[environment]
+    NODE_ENV = "staging"
+    ENVIRONMENT = "staging"
+    SIGNUP_BUCKETS = "{\"step3\":0}"

@@ -42,4 +42,29 @@ describe('upstart', function()
 			done();
 		});
 	});
+
+	it('handles objects', function(done)
+	{
+		upstart(__dirname + '/fixtures/user-acl-two.toml', '.', function() {}, function(err)
+		{
+			demand(err).not.exist();
+
+			fs.existsSync('./user-acl-two0.conf').must.be.true();
+			fs.existsSync('./user-acl-two1.conf').must.be.true();
+			fs.existsSync('./user-acl-two2.conf').must.be.true();
+			fs.existsSync('./user-acl-two3.conf').must.be.true();
+			fs.existsSync('./user-acl-two4.conf').must.be.false();
+
+			var data = fs.readFileSync('./user-acl-two3.conf', 'utf8');
+			data.must.match(/"staging"/);
+			data.must.match(/{\\"step3\\":0}/);
+
+			fs.unlinkSync('./user-acl-two0.conf');
+			fs.unlinkSync('./user-acl-two1.conf');
+			fs.unlinkSync('./user-acl-two2.conf');
+			fs.unlinkSync('./user-acl-two3.conf');
+
+			done();
+		});
+	});
 });
