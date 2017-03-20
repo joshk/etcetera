@@ -8,7 +8,7 @@ var
 	chalk     = require('chalk'),
 	fs        = require('fs'),
 	path      = require('path'),
-	Etcd      = require('node-etcd'),
+	etcdjs    = require('etcdjs'),
 	objectify = require('etcd-result-objectify'),
 	nunjucks  = require('nunjucks'),
 	transform = require('../lib/transform.js'),
@@ -53,7 +53,7 @@ rc.hosts = rc.hosts.map(function(h)
 {
 	return (rc.ssl ? 'https://' : 'http://') + h;
 });
-var etcd = new Etcd(rc.hosts);
+var etcd = etcdjs(rc.hosts);
 
 function log(msg)
 {
