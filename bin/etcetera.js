@@ -38,6 +38,11 @@ var
 			description: 'do not log helpfully',
 			type: 'boolean'
 		})
+		.option('h', {
+			alias: 'host',
+			description: 'etcd host to talk to (overrides `.renvrc`)',
+			type: 'array'
+		})
 		.help('help')
 		.demand(1)
 		.argv
@@ -48,12 +53,13 @@ var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
 nunjucks.configure({ autoescape: false });
 
-if (!Array.isArray(rc.hosts)) rc.hosts = rc.hosts.split(' ');
-rc.hosts = rc.hosts.map(function(h)
+var hosts = argv.host || rc.hosts;
+if (!Array.isArray(hosts)) hosts = hosts.split(' ');
+hosts = hosts.map(function(h)
 {
 	return (rc.ssl ? 'https://' : 'http://') + h;
 });
-var etcd = etcdjs(rc.hosts);
+var etcd = etcdjs(hosts);
 
 function log(msg)
 {
