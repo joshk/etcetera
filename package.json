@@ -12,7 +12,7 @@
     "url": "https://github.com/npm/etcetera/issues"
   },
   "dependencies": {
-    "async": "~2.1.2",
+    "async": "~2.4.1",
     "chalk": "~1.1.3",
     "etcd-result-objectify": "~1.0.0",
     "etcdjs": "^2.4.2",
