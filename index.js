@@ -1,3 +1,4 @@
 module.exports = {
-	upstart:   require('./lib/upstart')
+	upstart:   require('./lib/upstart'),
+	transform:   require('./lib/transform')
 };
