@@ -2,7 +2,8 @@
 
 var updater = require('update-notifier'),
 	pkg     = require('../package.json');
-updater({pkg: pkg}).notify();
+
+updater({pkg}).notify();
 
 var
 	chalk     = require('chalk'),

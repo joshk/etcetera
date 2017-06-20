@@ -26,12 +26,13 @@
   },
   "devDependencies": {
     "coveralls": "~2.13.1",
-    "eslint": "~4.0.0",
+    "eslint-config-ceejbot": "~1.1.0",
     "mocha": "~3.4.2",
     "must": "~0.13",
     "nyc": "~11.0.2",
     "sinon": "~2.3.2",
-    "standard-version": "~4.2.0"
+    "standard-version": "~4.2.0",
+    "xo": "~0.18.2"
   },
   "directories": {
     "test": "test"
@@ -49,9 +50,21 @@
   },
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint bin lib test index.js",
+    "lint": "xo",
     "test": "nyc mocha -R spec test",
     "travis": "npm run lint && nyc mocha -R spec test",
     "release": "standard-version"
+  },
+  "xo": {
+    "extends": "eslint-config-ceejbot",
+    "ignores": [
+      "public/**",
+      "lib/controllers/**",
+      "assets/**"
+    ],
+    "rules": {
+      "unicorn/prefer-starts-ends-with": 0,
+      "prefer-arrow-callback": 0
+    }
   }
 }
