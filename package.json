@@ -17,21 +17,21 @@
     "etcd-result-objectify": "~1.0.0",
     "etcdjs": "^2.4.2",
     "lodash.map": "~4.6.0",
-    "nunjucks": "~3.0.0",
-    "rc": "~1.1.6",
+    "nunjucks": "~3.0.1",
+    "rc": "~1.2.1",
     "shell-quote": "~1.6.1",
     "toml-require": "~1.1.0",
-    "update-notifier": "~1.0.0",
-    "yargs": "~8.0.1"
+    "update-notifier": "~2.2.0",
+    "yargs": "~8.0.2"
   },
   "devDependencies": {
-    "coveralls": "~2.11.9",
-    "eslint": "~3.13.0",
+    "coveralls": "~2.13.1",
+    "eslint": "~4.0.0",
     "mocha": "~3.4.2",
     "must": "~0.13",
-    "nyc": "~10.0.0",
+    "nyc": "~11.0.2",
     "sinon": "~2.3.2",
-    "standard-version": "^4.0.0"
+    "standard-version": "~4.2.0"
   },
   "directories": {
     "test": "test"
