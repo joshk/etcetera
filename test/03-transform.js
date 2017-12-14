@@ -103,7 +103,7 @@ describe('transform', function()
 	{
 		var input = { foo: '{"key":"nope", "key.group2":false}' };
 
-		var output = transform(input, 'app','group2');
+		var output = transform(input, 'app', 'group2');
 		output.must.be.an.object();
 		output.must.have.property('foo');
 		output.foo.must.have.property('key');
