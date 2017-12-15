@@ -99,6 +99,38 @@ describe('transform', function()
 		output.foo.key.must.equal('expected');
 	});
 
+	it('uses falsey group vars', function()
+	{
+		var input = { foo: '{"key":"nope", "key.group2":false}' };
+
+		var output = transform(input, 'app', 'group2');
+		output.must.be.an.object();
+		output.must.have.property('foo');
+		output.foo.must.have.property('key');
+		output.foo.key.must.equal(false);
+	});
+
+	it('uses falsey app vars', function()
+	{
+		var input = { foo: '{"key":"nope", "key.app":false}' };
+
+		var output = transform(input, 'app');
+		output.must.be.an.object();
+		output.must.have.property('foo');
+		output.foo.must.have.property('key');
+		output.foo.key.must.equal(false);
+	});
+
+	it('uses falsey app group vars', function()
+	{
+		var input = { foo: '{"key":"nope", "key.app.group2":false}' };
+
+		var output = transform(input, 'app', 'group2');
+		output.must.be.an.object();
+		output.must.have.property('foo');
+		output.foo.must.have.property('key');
+		output.foo.key.must.equal(false);
+	});
 	it('gracefully ignores group vars', function()
 	{
 		var input = { foo: '{"key":"not-expected","key.app":"expected", "key.other":"to-be-ignored"}' };
