@@ -15,14 +15,15 @@ const argv = require('yargs')
 	.option('template', {
 		alias: 't',
 		description: 'name of template file',
-		default: 'deploy.env.tmpl'
+		default: 'env.tmpl'
 	})
 	.option('output', {
 		alias: 'o',
 		description: 'name of destination config file',
-		default: 'deploy.env'
+		default: '.env'
 	})
 	.option('env', {
+		alias: 'e',
 		description: 'config environment',
 		default: 'default'
 	})
