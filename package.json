@@ -13,27 +13,27 @@
     "url": "https://github.com/npm/etcetera/issues"
   },
   "dependencies": {
-    "async": "~2.6.0",
-    "chalk": "~2.3.2",
+    "async": "~2.6.1",
+    "chalk": "~2.4.1",
     "etcd-result-objectify": "~1.0.0",
     "etcdjs": "^2.4.2",
     "lodash.map": "~4.6.0",
-    "nunjucks": "~3.1.2",
-    "rc": "~1.2.6",
+    "nunjucks": "~3.1.3",
+    "rc": "~1.2.8",
     "shell-quote": "~1.6.1",
     "toml-require": "~1.1.0",
-    "update-notifier": "~2.3.0",
+    "update-notifier": "~2.5.0",
     "yargs": "~11.0.0"
   },
   "devDependencies": {
-    "coveralls": "~3.0.0",
-    "eslint-config-ceejbot": "~1.1.1",
-    "mocha": "~5.0.4",
+    "coveralls": "~3.0.1",
+    "eslint-config-ceejbot": "~1.1.2",
+    "mocha": "~5.2.0",
     "must": "~0.13",
-    "nyc": "~11.6.0",
-    "sinon": "~4.4.8",
-    "standard-version": "~4.3.0",
-    "xo": "~0.20.3"
+    "nyc": "~12.0.2",
+    "sinon": "~6.0.1",
+    "standard-version": "~4.4.0",
+    "xo": "~0.21.1"
   },
   "directories": {
     "test": "test"
@@ -65,7 +65,8 @@
     ],
     "rules": {
       "unicorn/prefer-starts-ends-with": 0,
-      "prefer-arrow-callback": 0
+      "prefer-arrow-callback": 0,
+      "prefer-destructuring": 0
     }
   }
 }
