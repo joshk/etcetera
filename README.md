@@ -51,9 +51,9 @@ Examples:
 If you don't have a full path in the target for `upstarter`, it will look for a configuration file in `/mnt/deploys/TARGET/configuration.toml`.
 
 
-## .renvrc
+## .etcdrc
 
-`etcetera` will read your etcd configuration from any `.renvrc` files you have sitting around.
+`etcetera` will read your etcd configuration from any `.etcdrc` files you have sitting around, defaulting with `$HOME/.etcdrc` and falling back to `$HOME/.renvrc` for backwards compatibility
 
 ## LICENSE
 
