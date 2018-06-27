@@ -12,10 +12,6 @@ var
 	etcdjs    = require('etcdjs'),
 	objectify = require('etcd-result-objectify'),
 	nunjucks  = require('nunjucks'),
-	transform = require('../lib/transform.js'),
-	rc	  = require('rc')('renv', { hosts: '127.0.0.1:4001',
-		ssl:   false
-	}, []),
 	argv      = require('yargs')
 		.usage('configure the named application by filling out its template with data from etcd\n$0 [-d deploydir] [-g hostgroup] [-c template] appname')
 		.example('etcetera my-service')
@@ -49,17 +45,16 @@ var
 		.argv
 	;
 
+const
+	hosts     = require('../lib/rc')(argv),
+	transform = require('../lib/transform.js')
+;
+
 var app = argv._[0];
 var deploydir = argv.d || path.join('/mnt', 'deploys', app);
 var inputTmpl = path.join(deploydir, argv.template);
 nunjucks.configure({ autoescape: false });
 
-var hosts = argv.host || rc.hosts;
-if (!Array.isArray(hosts)) hosts = hosts.split(' ');
-hosts = hosts.map(function(h)
-{
-	return (rc.ssl ? 'https://' : 'http://') + h;
-});
 var etcd = etcdjs(hosts);
 
 function log(msg)

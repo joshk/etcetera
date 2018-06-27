@@ -34,41 +34,16 @@ const argv = require('yargs')
 
 const
 	chalk     = require('chalk'),
+	etcdjs    = require('etcdjs'),
 	fs        = require('fs'),
 	path      = require('path'),
-	etcdjs    = require('etcdjs'),
 	objectify = require('etcd-result-objectify'),
 	nunjucks  = require('nunjucks'),
-	RC        = require('rc'),
+	hosts     = require('../lib/rc')(argv),
 	transform = require('../lib/transform.js')
 ;
 
-// prefer an etcdrc
-let etcd;
-let rc = RC('etcd');
-if (Object.keys(rc).length === 1)
-{
-	// fall back to renvrc
-	rc = RC('renv', { hosts: '127.0.0.1:4001', ssl: false }, []);
-	var hosts = argv.host || rc.hosts;
-	if (!Array.isArray(hosts)) hosts = hosts.split(' ');
-	hosts = hosts.map(function(h)
-	{
-		return (rc.ssl ? 'https://' : 'http://') + h;
-	});
-	etcd = etcdjs(hosts);
-}
-else
-{
-	var configset = rc[argv.env] || rc;
-	if (!Array.isArray(configset.hosts)) configset.hosts = [configset.hosts];
-	configset.hosts = configset.hosts.map(h =>
-	{
-		return (configset.ssl ? 'https://' : 'http://') + h;
-	});
-	etcd = etcdjs(configset.hosts);
-}
-
+const etcd = etcdjs(hosts);
 const app = argv._[0];
 const inputTmpl = path.join('.', argv.template);
 const destname = path.join('.', argv.output);
