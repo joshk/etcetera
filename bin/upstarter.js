@@ -17,6 +17,11 @@ var
 			description: 'do not log helpfully',
 			type: 'boolean'
 		})
+		.option('f', {
+			alias: 'filebeat',
+			description: 'write to filebeat instead of disk',
+			type: 'boolean'
+		})
 		.help('help')
 		.demand(1)
 		.argv
@@ -34,7 +39,7 @@ function log(msg)
 	console.log(msg);
 }
 
-upstart(configpath, argv.output, log, function(err)
+upstart(configpath, argv, log, function(err)
 {
 	if (err) throw err;
 	process.exit(0);

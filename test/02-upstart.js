@@ -23,7 +23,7 @@ describe('upstart', function()
 
 	it('writes stuff', function(done)
 	{
-		upstart(__dirname + '/fixtures/test1.toml', '.', function() {}, function(err)
+		upstart(__dirname + '/fixtures/test1.toml', {output: '.'}, function() {}, function(err)
 		{
 			demand(err).not.exist();
 
@@ -45,7 +45,7 @@ describe('upstart', function()
 
 	it('handles objects', function(done)
 	{
-		upstart(__dirname + '/fixtures/user-acl-two.toml', '.', function() {}, function(err)
+		upstart(__dirname + '/fixtures/user-acl-two.toml', {output: '.'}, function() {}, function(err)
 		{
 			demand(err).not.exist();
 

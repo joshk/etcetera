@@ -10,10 +10,12 @@ setuid ubuntu
 setgid ubuntu
 limit nofile 1000000 1000000
 
-limit core unlimited unlimited
-
 script
     cd {{deploydir}}
     {{env}} {{start}} \
+    {% if filebeat -%}
+    {{args}} {{argv}} 2>&1 | log-ingest
+    {% else -%}
     {{args}} {{argv}} >> logs/{{app}}%i.log 2>&1
+    {% endif -%}
 end script
