@@ -3,7 +3,7 @@
 description "{{description}}"
 {% endif %}
 
-start on started network-services
+start on (local-filesystems and net-device-up IFACE!=lo)
 stop on stopping network-services
 respawn
 setuid ubuntu
