@@ -1,8 +1,14 @@
 language: node_js
+
+os:
+  - linux
+  - windows
+
 node_js:
-    - '6'
-    - '8'
-    - '10'
+  - '6'
+  - '8'
+  - '10'
+
 script: npm run travis
-sudo: false
+
 after_success: npm run coverage
